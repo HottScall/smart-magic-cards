@@ -1,15 +1,44 @@
-const suit = "hearts";
+// User Stories
+//
+// As a player I want to be able to be able to see a full deck of cards ordered by number and suit when I press “let’s get started”
+// 1 - Create an array of numbers and faces
+// 2 - Create and Array of suits
+// 3 - Combine both arrays - new function, loop
+// 4 - Render the cards to the DOM
+// As a player I want to be able to shuffle a deck of cards
+// As a player I want to be able to turn all cards face down
+// As a player I want to be able to turn a shuffled pack of cards back into their original state
+
+const suit = ["clubs", "spades", "diamonds", "hearts"];
+const cardValue = [
+  "A",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K"
+];
 const cardsWrapper = document.querySelector(".cards-wrapper");
 
 function createCards() {
   const cards = [];
-  // Create an array with objects containing the value and the suit of each card
-  for (let i = 1; i <= 13; i += 1) {
-    const cardObject = {
-      value: i,
-      suit
-    };
-    cards.push(cardObject);
+
+  for (let x = 0; x < suit.length; x++) {
+    for (let i = 0; i < cardValue.length; i++) {
+      const cardObject = {
+        value: cardValue[i],
+        suit: suit[x]
+      };
+      cards.push(cardObject);
+    }
+    console.log(createCards);
   }
 
   // For each dataObject, create a new card and append it to the DOM
