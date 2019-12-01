@@ -9,6 +9,8 @@
 // As a player I want to be able to turn a shuffled pack of cards back into their original state
 
 const cardsWrapper = document.querySelector(".cards-wrapper");
+const buttonWrapper = document.querySelector(".btn-wrapper");
+const getStarted = document.querySelector("#start-game");
 const cards = [];
 const suit = ["clubs", "spades", "diamonds", "hearts"];
 
@@ -37,22 +39,30 @@ function deckRenderer() {
 
 function shuffleDeck() {
   const shuffled = cards.sort((card1, card2) => Math.random() - Math.random());
-  console.log(shuffled);
+  console.log(deckRenderer(shuffled));
+  return deckRenderer(shuffled);
 }
 
 function createButtons() {
   const button = document.createElement("Button");
+  button.setAttribute("type", "button");
+  button.classList.add("button", "btn-lg", "btn-secondary");
+  button.style.marginRight = "20px";
+  button.innerHTML = "shuffle";
+  buttonWrapper.append(button);
+
+  if (button.innerHTML === "shuffle") {
+    button.addEventListener("click", shuffleDeck);
+  }
 }
 
-// Function to start the game by clearing the wrapper, creating
-// and appending the buttons and all the cards to the DOM
 function startGame() {
   createButtons();
   createCards();
   deckRenderer();
 }
 
-shuffleDeck();
-
 document.getElementById("start-game").addEventListener("click", startGame);
-document.getElementById("shuffle-deck").addEventListener("click", shuffleDeck);
+
+// Function to start the game by clearing the wrapper, creating
+// and appending the buttons and all the cards to the DOM
