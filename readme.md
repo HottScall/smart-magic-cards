@@ -10,6 +10,12 @@ Join Smart by performing a simple magic trick.
   - **Magic:** Order the cards again by suit.
 - When performing the trick, use the existing cards rather then create new ones.
 
+### User Stories
+- As a player I want to be able to be able to see a full deck of cards ordered by number and suit when I press “let’s get started”
+- As a player I want to be able to shuffle a deck of cards
+- As a player I want to be able to turn all cards face down 
+- As a player I want to be able to turn a shuffled pack of cards back into their original state
+
 #### Bonus points
   - Find a way to remove duplications in the `cards.scss` file and generate all the classes automatically for the cards: `.hearts-1`, `.hearts-2`, ... , `.spades-13`.
   - Add animation.
