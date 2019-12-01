@@ -6,6 +6,9 @@
 // 3 - Combine both arrays - new function, loop
 // 4 - Render the cards to the DOM
 // As a player I want to be able to shuffle a deck of cards
+// 1 - Click a button named shuffle
+// 2 - The deck of cards randomly generate a new order
+
 // As a player I want to be able to turn all cards face down
 // As a player I want to be able to turn a shuffled pack of cards back into their original state
 
