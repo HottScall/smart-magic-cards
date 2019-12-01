@@ -9,47 +9,40 @@
 // As a player I want to be able to turn all cards face down
 // As a player I want to be able to turn a shuffled pack of cards back into their original state
 
+const deck = [];
 const suit = ["clubs", "spades", "diamonds", "hearts"];
-const cardValue = [
-  "A",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "J",
-  "Q",
-  "K"
-];
+
 const cardsWrapper = document.querySelector(".cards-wrapper");
 
 function createCards() {
   const cards = [];
-
   for (let x = 0; x < suit.length; x++) {
-    for (let i = 0; i < cardValue.length; i++) {
+    for (let i = 0; i <= 13; i += 1) {
       const cardObject = {
-        value: cardValue[i],
+        value: i,
         suit: suit[x]
       };
       cards.push(cardObject);
     }
-    console.log(createCards);
   }
 
+  // Cards are rendering each suit from 2 - 10 on the DOM
+  // Console.log(cards) shows all cards in ordered value in the DOM
+  // Issue must be within the render method
+
   // For each dataObject, create a new card and append it to the DOM
-  cards.forEach((card, i) => {
-    const positionFromLeft = i * 15;
-    const cardElement = document.createElement("div");
-    cardElement.setAttribute("data-value", card.value);
-    cardElement.classList.add("card", `${card.suit}-${card.value}`);
-    cardElement.style.left = `${positionFromLeft}px`;
-    cardsWrapper.append(cardElement);
-  });
+
+  function deckRenderer() {
+    cards.forEach((card, i) => {
+      const positionFromLeft = i * 19;
+      const cardElement = document.createElement("div");
+      cardElement.setAttribute("data-value", card.value);
+      cardElement.classList.add("card", `${card.suit}-${card.value}`);
+      cardElement.style.left = `${positionFromLeft}px`;
+      cardsWrapper.append(cardElement);
+    });
+  }
+  deckRenderer();
 }
 
 // Function to clear out the initial button and create new buttons to play the game.
