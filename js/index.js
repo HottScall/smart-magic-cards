@@ -1,33 +1,39 @@
 // User Stories
-// As a player I want to be able to shuffle a deck of cards
-// 1 - User click "shuffle" buttons
-// 2 - The deck array then sorts the cards individually (slice?)
-// 3 - The individual cards are then randomly mixed (math random?)
-// 2 - The new cards are now generated and rendered in their new order (render on DOM)
-
 // As a player I want to be able to turn all cards face down
+// User clicks "face down" button
 // As a player I want to be able to turn a shuffled pack of cards back into their original state
 
 const cardsWrapper = document.querySelector(".cards-wrapper");
 const buttonWrapper = document.querySelector(".btn-wrapper");
 const getStarted = document.querySelector("#start-game");
-const cards = [];
-const suit = ["clubs", "spades", "diamonds", "hearts"];
+
+var cardGame = (function() {
+  const cards = [];
+  const suit = ["clubs", "spades", "diamonds", "hearts"];
+
+  return {
+    cards: cards,
+    suit: suit
+  };
+})();
+
+console.log(cardGame.suit);
+console.log(cardGame.cards);
 
 function createCards() {
-  for (let x = 0; x < suit.length; x++) {
+  for (let x = 0; x < cardGame.suit.length; x++) {
     for (let i = 0; i <= 13; i += 1) {
       const cardObject = {
         value: i,
-        suit: suit[x]
+        suit: cardGame.suit[x]
       };
-      cards.push(cardObject);
+      cardGame.cards.push(cardObject);
     }
   }
 }
 
 function deckRenderer() {
-  cards.forEach((card, i) => {
+  cardGame.cards.forEach((card, i) => {
     const positionFromLeft = i * 19;
     const cardElement = document.createElement("div");
     cardElement.setAttribute("data-value", card.value);
@@ -38,7 +44,9 @@ function deckRenderer() {
 }
 
 function shuffleDeck() {
-  const shuffled = cards.sort((card1, card2) => Math.random() - Math.random());
+  const shuffled = cardGame.cards.sort(
+    (card1, card2) => Math.random() - Math.random()
+  );
   console.log(deckRenderer(shuffled));
   return deckRenderer(shuffled);
 }
@@ -47,7 +55,7 @@ function createButtons() {
   const button = document.createElement("Button");
   button.setAttribute("type", "button");
   button.classList.add("button", "btn-lg", "btn-secondary");
-  button.style.marginRight = "20px";
+  button.style.marginLeft = "15px";
   button.innerHTML = "shuffle";
   buttonWrapper.append(button);
 
