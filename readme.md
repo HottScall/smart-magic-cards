@@ -22,8 +22,6 @@ Join Smart by performing a simple magic trick.
 
 <h4 align="center"> As a player I want to be able to be able to see a full deck of cards ordered by number and suit when I press “let’s get started”  </h4>
 
-
-
   - Array of numbers and faces
   - Array of suits 
   - Combine both arrays
@@ -38,6 +36,7 @@ Join Smart by performing a simple magic trick.
 
 
 <h4 align="center"> As a player I want to be able to turn all cards face down </h4>
+
  - Player clicks Face Down
  - Toggle to the back of the card 
  -  Access Css Element (hidden)
@@ -46,6 +45,7 @@ Join Smart by performing a simple magic trick.
 
 		
 <h4 align="center"> As a player I want to be able to turn a shuffled pack of cards back into their original state </h4>
+
  - User Click Magic Button 
  - The button takes the current array (gameCard.Deck)
  - Sorts the array by comparing the cards (card1.suit, card2.suit)
