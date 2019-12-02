@@ -60,17 +60,8 @@ function faceDown() {
 }
 
 function magicTrick(){
-
-  // User clicks magic button - done
-  // the button takes the current array - cardGame.deck.
-  // sorts the array by suit
-  // argument a.suit < argument b.suit
-  // sort the array by value
-  // argument a.value < b.value
-  //returns the new array
-  // deckRenderer(sorted)
-  // the original array is returned (sort?)
-
+  var sorted = cardGame.deck.sort((card1, card2) => (card1.suit < card2.suit) ? 1 : (card1.suit === card2.suit) ? ((card1.value < card2.value) ? 1 : -1) : -1 )
+    return deckRenderer(sorted.reverse())
 }
 
 function createButtons() {
