@@ -1,6 +1,4 @@
 // User Stories
-// As a player I want to be able to turn all cards face down
-// User clicks "face down" button
 // As a player I want to be able to turn a shuffled pack of cards back into their original state
 
 const cardsWrapper = document.querySelector(".cards-wrapper");
@@ -10,15 +8,14 @@ const getStarted = document.querySelector("#start-game");
 var cardGame = (function() {
   const cards = [];
   const suit = ["clubs", "spades", "diamonds", "hearts"];
+  const buttons = ["Shuffle", "Face Down", "Magic"];
 
   return {
     cards: cards,
-    suit: suit
+    suit: suit,
+    buttons: buttons
   };
 })();
-
-console.log(cardGame.suit);
-console.log(cardGame.cards);
 
 function createCards() {
   for (let x = 0; x < cardGame.suit.length; x++) {
@@ -47,30 +44,40 @@ function shuffleDeck() {
   const shuffled = cardGame.cards.sort(
     (card1, card2) => Math.random() - Math.random()
   );
-  console.log(deckRenderer(shuffled));
   return deckRenderer(shuffled);
 }
 
-function createButtons() {
-  const button = document.createElement("Button");
-  button.setAttribute("type", "button");
-  button.classList.add("button", "btn-lg", "btn-secondary");
-  button.style.marginLeft = "15px";
-  button.innerHTML = "shuffle";
-  buttonWrapper.append(button);
-
-  if (button.innerHTML === "shuffle") {
-    button.addEventListener("click", shuffleDeck);
+function faceDown() {
+  const flipped = cardsWrapper.classList.toggle("hidden");
+  if (flipped == true) {
+    document.getElementById("butt1").innerHTML = "Face Up";
+  } else {
+    document.getElementById("butt1").innerHTML = "Face Down";
   }
+}
+
+function createButtons() {
+  getStarted.remove();
+  cardGame.buttons.forEach((button, i) => {
+    const butt = document.createElement("Button");
+    butt.classList.add("button", "btn-lg", "btn-secondary");
+    butt.style.marginLeft = "15px";
+    butt.innerHTML = cardGame.buttons[i];
+    butt.setAttribute("id", `butt${i}`);
+    buttonWrapper.append(butt);
+  });
+}
+
+function addEventListeners() {
+  document.getElementById("butt0").addEventListener("click", shuffleDeck);
+  document.getElementById("butt1").addEventListener("click", faceDown);
+  // document.getElementById("butt2").addEventListener("click", magicTrick);
 }
 
 function startGame() {
   createButtons();
   createCards();
   deckRenderer();
+  addEventListeners();
 }
-
 document.getElementById("start-game").addEventListener("click", startGame);
-
-// Function to start the game by clearing the wrapper, creating
-// and appending the buttons and all the cards to the DOM
