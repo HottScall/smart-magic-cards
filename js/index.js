@@ -1,5 +1,5 @@
 const cardGame = (function () {
-  const cards = [];
+  const deck = [];
   const suit = ['clubs', 'spades', 'diamonds', 'hearts'];
   const buttons = ['Shuffle', 'Face Down', 'Magic'];
   const cardsWrapper = document.querySelector('.cards-wrapper');
@@ -7,7 +7,7 @@ const cardGame = (function () {
   const getStarted = document.querySelector('#start-game');
 
   return {
-    cards: cards,
+    deck: deck,
     suit: suit,
     buttons: buttons,
     cardsWrapper: cardsWrapper,
@@ -23,16 +23,20 @@ function createCards() {
         value: i,
         suit: cardGame.suit[x],
       };
-      cardGame.cards.push(cardObject);
+      cardGame.deck.push(cardObject);
     }
   }
 }
 
 function deckRenderer() {
-  cardGame.cards.forEach((card, i) => {
+  cardGame.deck.forEach((card, i) => {
     const positionFromLeft = i * 19;
     const cardElement = document.createElement('div');
     cardElement.setAttribute('data-value', card.value);
+    // Added a id attribute which has given each card an id upon initial render
+    // Do something with this to render all cards back into order
+    // Can you now sort them?
+    cardElement.setAttribute('id', `${i}`);
     cardElement.classList.add('card', `${card.suit}-${card.value}`);
     cardElement.style.left = `${positionFromLeft}px`;
     cardGame.cardsWrapper.append(cardElement);
@@ -40,7 +44,7 @@ function deckRenderer() {
 }
 
 function shuffleDeck() {
-  const shuffled = cardGame.cards.sort(
+  const shuffled = cardGame.deck.sort(
     (card1, card2) => Math.random() - Math.random(),
   );
   return deckRenderer(shuffled);
@@ -53,6 +57,20 @@ function faceDown() {
   } else {
     document.getElementById('butt1').innerHTML = 'Face Down';
   }
+}
+
+function magicTrick(){
+
+  // User clicks magic button - done
+  // the button takes the current array - cardGame.deck.
+  // sorts the array by suit
+  // argument a.suit < argument b.suit
+  // sort the array by value
+  // argument a.value < b.value
+  //returns the new array
+  // deckRenderer(sorted)
+  // the original array is returned (sort?)
+
 }
 
 function createButtons() {
@@ -70,7 +88,7 @@ function createButtons() {
 function addEventListeners() {
   document.getElementById('butt0').addEventListener('click', shuffleDeck);
   document.getElementById('butt1').addEventListener('click', faceDown);
-  // document.getElementById('butt2').addEventListener('click', magicTrick);
+  document.getElementById('butt2').addEventListener('click', magicTrick);
 }
 
 function startGame() {
