@@ -37,7 +37,7 @@ Join Smart by performing a simple magic trick.
  - Randomly generate a new card for each 
 
 
-<h4 align="center"> As a player I want to be able to turn all cards face down   </h4>
+<h4 align="center"> As a player I want to be able to turn all cards face down </h4>
  - Player clicks Face Down
  - Toggle to the back of the card 
  -  Access Css Element (hidden)
@@ -45,7 +45,7 @@ Join Smart by performing a simple magic trick.
  - Change text on button from Card Down to Card Up when flipped (if else statement on the button name)
 
 		
-<h4 align="center"> As a player I want to be able to turn a shuffled pack of cards back into their original state  </h4>
+<h4 align="center"> As a player I want to be able to turn a shuffled pack of cards back into their original state </h4>
  - User Click Magic Button 
  - The button takes the current array (gameCard.Deck)
  - Sorts the array by comparing the cards (card1.suit, card2.suit)
