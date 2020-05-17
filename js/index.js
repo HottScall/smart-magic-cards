@@ -16,6 +16,7 @@ const cardGame = (function () {
   };
 }());
 
+
 function createCards() {
   for (let x = 0; x < cardGame.suit.length; x++) {
     for (let i = 0; i <= 13; i += 1) {
@@ -60,8 +61,9 @@ function faceDown() {
 }
 
 function magicTrick(){
-  var sorted = cardGame.deck.sort((card1, card2) => (card1.suit < card2.suit) ? 1 : (card1.suit === card2.suit) ? ((card1.value < card2.value) ? 1 : -1) : -1 )
+  var sorted = cardGame.deck.sort((card1, card2) => (card1.suit < card2.suit) ? true : (card1.suit === card2.suit) ? ((card1.value < card2.value) ? true : -1) : -1 )
     return deckRenderer(sorted.reverse())
+    console.log(sorted)
 }
 
 function createButtons() {
